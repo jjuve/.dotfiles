@@ -16,7 +16,6 @@ function iterate(){
 				;;
 			esac
 		elif [[ -d "$x" ]]; then
-			echo "$x"
 			iterate "$x"
 		fi
 	done

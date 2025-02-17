@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+
+SOURCE_DIR="/Users/jj/app"
+DEST_BASE="/Users/jj/tmp"
+DEST_PNG="$DEST_BASE/png"
+DEST_JPEG="$DEST_BASE/jpeg"
+
+if [[ ! -d "$DEST_BASE" ]]; then
+    echo "Destination directory not found. Creating directories..."
+    mkdir -v -p "$DEST_PNG" "$DEST_JPEG"
+else
+    echo "Destination directory found."
+    mkdir -p "$DEST_PNG" "$DEST_JPEG"
+fi
+
+find "$SOURCE_DIR" -type f \( -iname '*.png' -o -iname '*.jpeg' -o -iname '*.jpg' \) -print0 |
+while IFS= read -r -d '' file; do
+    case "$file" in
+        *.png)
+            echo "Copying $file to $DEST_PNG"
+            cp "$file" "$DEST_PNG"
+            ;;
+        *.jpeg|*.jpg)
+            echo "Copying $file to $DEST_JPEG"
+            cp "$file" "$DEST_JPEG"
+            ;;
+        *)
+            echo "Skipping $file (unrecognized file type)"
+            ;;
+    esac
+done
