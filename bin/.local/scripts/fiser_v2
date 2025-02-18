@@ -11,10 +11,10 @@ DEST_PPT="$DEST_BASE/ppt" #add pptx
 
 if [[ ! -d "$DEST_BASE" ]]; then
     echo "Destination directory not found. Creating directories..."
-    mkdir -v -p "$DEST_PNG" "$DEST_JPEG" "$DEST_DOC" "$DEST_XLS" "$DEST_PPT"
+    mkdir -v -p "$DEST_PNG" "$DEST_JPEG" "$DEST_PDF" "$DEST_DOC" "$DEST_XLS" "$DEST_PPT"
 else
     echo "Destination directory found."
-    mkdir -p "$DEST_PNG" "$DEST_JPEG" "$DEST_DOC" "$DEST_XLS" "$DEST_PPT"
+    mkdir -p "$DEST_PNG" "$DEST_JPEG" "$DEST_PDF" "$DEST_DOC" "$DEST_XLS" "$DEST_PPT"
 fi
 
 find "$SOURCE_DIR" -type f \( -iname '*.png' -o -iname '*.jpeg' -o -iname '*.jpg' -o -iname '*.pdf' -o -iname '*.doc' -o -iname '*.docx' -o -iname '*.xls' -o -iname '*.xlms' -o -iname '*.xlsx' -o -iname '*.ppt' -o -iname '*.pptx' \) -print0 |
@@ -27,6 +27,10 @@ while IFS= read -r -d '' file; do
         *.jpeg|*.jpg)
             echo "Copying $file to $DEST_JPEG"
             cp "$file" "$DEST_JPEG"
+            ;;
+        *.pdf)
+            echo "Copying $file to $DEST_PDF"
+            cp "$file" "$DEST_PDF"
             ;;
 		*.doc|*.docx)
             echo "Copying $file to $DEST_DOC"
