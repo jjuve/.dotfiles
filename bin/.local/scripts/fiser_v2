@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+shopt -s nocasematch
+
 SOURCE_DIR="/Users/jj/app"
 DEST_BASE="/Users/jj/tmp"
 DEST_PNG="$DEST_BASE/png"
