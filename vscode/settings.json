@@ -1,0 +1,4 @@
+{
+    "vim.leader": "<space>",
+    "editor.lineNumbers": "relative"
+}
