@@ -18,5 +18,16 @@
         "key": "ctrl+l",
         "command": "workbench.action.navigateRight",
         "when": "editorTextFocus"
+    },
+    // Ensure that tab button works in vim.
+    {
+        "key": "tab",
+        "command": "tab",
+        "when": "editorTextFocus && !editorTabMovesFocus"
+    },
+    {
+        "key": "shift+tab",
+        "command": "outdent",
+        "when": "editorTextFocus && !editorTabMovesFocus"
     }
 ]
