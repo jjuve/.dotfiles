@@ -1,4 +1,5 @@
 {
     "vim.leader": "<space>",
-    "editor.lineNumbers": "relative"
+    "editor.lineNumbers": "relative",
+    "vim.useSystemClipboard": true,
 }
