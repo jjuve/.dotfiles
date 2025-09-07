@@ -7,7 +7,12 @@ vim.keymap.set('n', '<C-h>', '<C-w><C-h>', { desc = 'Move focus to the left wind
 vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right window' })
 vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
 vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
+
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
+-- Clear highlights on search when pressing <Esc> in normal mode
+--  See `:help hlsearch`
+vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
+vim.keymap.set("n", "<leader>e", vim.cmd.Ex, { desc = "Open netrw file explorer" })
 
 --- Options
 vim.o.relativenumber = true
@@ -19,9 +24,14 @@ vim.o.updatetime = 250
 vim.o.timeoutlen = 300
 vim.o.splitright = true
 vim.o.splitbelow = true
-vim.o.cursorline = true
 vim.o.scrolloff = 10
 vim.o.confirm = true
+vim.o.showmode = false
+vim.o.breakindent = true
+vim.o.undofile = true
+vim.o.signcolumn = 'yes'
+-- Preview substitutions live, as you type!
+vim.o.inccommand = 'split'
 
 vim.opt.shiftwidth = 4
 
@@ -38,31 +48,5 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   end,
 })
 
---- Plugins
--- Bootstrap lazy.nvim
-local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not (vim.uv or vim.loop).fs_stat(lazypath) then
-  local lazyrepo = "git@github.com:folke/lazy.nvim.git"
-  local out = vim.fn.system({ "git", "clone", "--filter=blob:none", "--branch=stable", lazyrepo, lazypath })
-  if vim.v.shell_error ~= 0 then
-    vim.api.nvim_echo({
-      { "Failed to clone lazy.nvim:\n", "ErrorMsg" },
-      { out, "WarningMsg" },
-      { "\nPress any key to exit..." },
-    }, true, {})
-    vim.fn.getchar()
-    os.exit(1)
-  end
-end
-vim.opt.rtp:prepend(lazypath)
-
-local plugin = {
-  {"git@github.com:folke/tokyonight.nvim.git", lazy = false, priority = 1000, opts = {},},
-}
-
-local opts = {}
-
-require("lazy").setup(plugin, opts)
-
-require("tokyonight").setup()
-vim.cmd[[colorscheme tokyonight]]
+-- Load lazy.nvim
+require("config.lazy")
