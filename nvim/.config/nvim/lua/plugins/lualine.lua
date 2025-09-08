@@ -1,12 +1,10 @@
 return{
 {
-    'git@github.com:nvim-lualine/lualine.nvim.git',
-    dependencies = { 'git@github.com:nvim-tree/nvim-web-devicons.git',
-		     'git@github.com:nvim-tree/nvim-tree.lua.git',
-    },
+    'nvim-lualine/lualine.nvim',
+    dependencies = { 'nvim-tree/nvim-web-devicons' },
     opts = {
 	options = {
-	    theme = 'tokyonight',
+	    theme = 'tokyonight'
 	} 
     }
 }

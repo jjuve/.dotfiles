@@ -15,6 +15,7 @@ vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 vim.keymap.set("n", "<leader>e", vim.cmd.Ex, { desc = "Open netrw file explorer" })
 
 --- Options
+vim.o.number = true
 vim.o.relativenumber = true
 vim.o.mouse = 'a'
 vim.o.ignorecase = true
@@ -44,7 +45,7 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   desc = 'Highlight when yanking (copying) text',
   group = vim.api.nvim_create_augroup('kickstart-highlight-yank', { clear = true }),
   callback = function()
-    vim.hl.on_yank()
+    vim.highlight.on_yank()
   end,
 })
 
