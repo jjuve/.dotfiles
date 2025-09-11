@@ -12,7 +12,6 @@ vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagn
 -- Clear highlights on search when pressing <Esc> in normal mode
 --  See `:help hlsearch`
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
-vim.keymap.set("n", "<leader>e", vim.cmd.Ex, { desc = "Open netrw file explorer" })
 
 --- Options
 vim.o.number = true
@@ -35,6 +34,7 @@ vim.o.signcolumn = 'yes'
 vim.o.inccommand = 'split'
 
 vim.opt.shiftwidth = 4
+vim.opt.tabstop = 4
 
 vim.schedule(function()
   vim.o.clipboard = 'unnamedplus'
