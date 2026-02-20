@@ -1,0 +1,13 @@
+{
+    "vim.leader": "<space>",
+    "editor.lineNumbers": "relative",
+    "vim.useSystemClipboard": true,
+    "editor.cursorBlinking": "solid",
+    "workbench.startupEditor": "none",
+    "window.zoomLevel": 2,
+    "extensions.ignoreRecommendations": true,
+    "workbench.layoutControl.enabled": false,
+    "explorer.confirmDelete": false,
+    "editor.insertSpaces": false,
+    "git.openRepositoryInParentFolders": "never"
+}
